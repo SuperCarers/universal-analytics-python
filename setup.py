@@ -1,7 +1,10 @@
 from setuptools import setup
+import subprocess
 import sys
 
-VERSION=open('commit-version').read().strip()
+
+cmd = subprocess.Popen('git describe --tags $(git rev-list --tags --max-count=1)', shell=True, stdout=subprocess.PIPE)
+VERSION = next(cmd.stdout)
 print >>sys.stderr, "Preparing version {0}\n".format(VERSION or "NOTFOUND")
 
 
