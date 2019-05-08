@@ -3,9 +3,13 @@ import subprocess
 import sys
 
 
-cmd = subprocess.Popen('git describe --tags $(git rev-list --tags --max-count=1)', shell=True, stdout=subprocess.PIPE)
+cmd = subprocess.Popen(
+    'git describe --tags $(git rev-list --tags --max-count=1)',
+    shell=True,
+    stdout=subprocess.PIPE
+)
 VERSION = next(cmd.stdout)
-print >>sys.stderr, "Preparing version {0}\n".format(VERSION or "NOTFOUND")
+print("Preparing version {0}\n".format(VERSION or "NOTFOUND"))
 
 
 try:
@@ -16,7 +20,7 @@ except Exception:
 
 
 setup(
-    name = "universal-analytics-python",
+    name = "universal-analytics-python-scp",
     description = "Universal Analytics Python Module",
     long_description = long_description,
 
