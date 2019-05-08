@@ -8,7 +8,7 @@ cmd = subprocess.Popen(
     shell=True,
     stdout=subprocess.PIPE
 )
-VERSION = next(cmd.stdout)
+VERSION = str(next(cmd.stdout))
 print("Preparing version {0}\n".format(VERSION or "NOTFOUND"))
 
 
